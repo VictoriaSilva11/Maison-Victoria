@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
+:root {
+    --fonte-principal: 'EB Garamond', serif;
+    --cor-texto: white;
+    --cor-fundo: #111111cf;
+    --cor-destaque: #f3efe9;
+}
+
