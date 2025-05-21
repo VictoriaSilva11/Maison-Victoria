@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página do carrinho de compras</title>
+    <link rel="stylesheet" href="carrinho.css">
+</head>
+<body>
+    <div class="cabecalho">
+        <div class="logo"> Maison Victoria </div>
+        <nav class="menu">
+            <a href="">Home</a>
+            <a href="">Coleções</a>
+            <a href="">Presentes</a>
+            <a href="">História</a>
+            <a href="">Carrinho</a>
+        </nav>
+    </div>
+
+    <div class="formularios">
+        <h2 class="titulo-formularios">Adicionar item ao carrinho</h2>
+        <form class="form-carrinho">
+            <label for="nome">Nome do item:</label>
+            <input type="text" id="nome" required>
+            <!--O required define que o campo deve ser obrigatoriamente preenchido antes de ser enviado-->>
+
+            <label for="tipo">Tipo:</label>
+            <input type="text" id="tipo" required>
+
+            <label for="colecao">Preço ($):</label>
+            <input type="text" id="colecao" required>
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="text" id="quantidade" required>
+
+            <button type="submit">Adicionar</button>
+            <p class="mensagem" id="mensagem"></p>
+        </form>
+    </div>
+    
+</body>
+</html>
