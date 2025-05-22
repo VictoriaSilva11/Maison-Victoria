@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página do carrinho de compras</title>
     <link rel="stylesheet" href="carrinho.css">
 </head>
+
 <body>
     <div class="cabecalho">
         <div class="logo"> Maison Victoria </div>
@@ -20,7 +22,9 @@
 
     <section class="video-section">
         <video class="video" autoplay muted loop playsinline>
-            <source src="https://www.vancleefarpels.com/content/dam/vancleefarpels/gift/mother's-day-2025/special-event/COVER%20EVENT%20DESKTOP.mp4" type="video/mp4">
+            <source
+                src="https://www.vancleefarpels.com/content/dam/vancleefarpels/gift/mother's-day-2025/special-event/COVER%20EVENT%20DESKTOP.mp4"
+                type="video/mp4">
         </video>
     </section>
 
@@ -48,42 +52,43 @@
     </section>
 
     <script>
-    document.getElementById('formCarrinho').addEventListener('submit', async function (e) {
-      e.preventDefault();
-  
-      const nome = document.getElementById('nome').value.trim();
-      const tipo = document.getElementById('tipo').value.trim();
-      const colecao = document.getElementById('colecao').value.trim();
-      const preco = parseFloat(document.getElementById('preco').value);
-      const quantidade = parseInt(document.getElementById('quantidade').value);
-  
-      const mensagem = document.getElementById('mensagem');
+        document.getElementById('formCarrinho').addEventListener('submit', async function (e) {
+            e.preventDefault();
 
-      if (!nome || !tipo || !colecao || isNaN(preco) || isNaN(quantidade) || quantidade < 1) {
-        mensagem.textContent = "Preencha todos os campos corretamente!";
-        mensagem.style.color = "red";
-        return;
-      }
-  
-      const dados = {nome, tipo, colecao, preco, quantidade };
-  
-      try {
-        const resposta = await fetch('http://localhost:8000/carrinho', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(dados)
+            const nome = document.getElementById('nome').value.trim();
+            const tipo = document.getElementById('tipo').value.trim();
+            const colecao = document.getElementById('colecao').value.trim();
+            const preco = parseFloat(document.getElementById('preco').value);
+            const quantidade = parseInt(document.getElementById('quantidade').value);
+
+            const mensagem = document.getElementById('mensagem');
+
+            if (!nome || !tipo || !colecao || isNaN(preco) || isNaN(quantidade) || quantidade < 1) {
+                mensagem.textContent = "Preencha todos os campos corretamente!";
+                mensagem.style.color = "red";
+                return;
+            }
+
+            const dados = { nome, tipo, colecao, preco, quantidade };
+
+            try {
+                const resposta = await fetch('http://localhost:8000/carrinho', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dados)
+                });
+
+                const resultado = await resposta.json();
+
+                mensagem.textContent = resultado.mensagem;
+                mensagem.style.color = resposta.ok ? "green" : "red";
+            } catch (erro) {
+                mensagem.textContent = "Erro ao conectar com o servidor.";
+                mensagem.style.color = "red";
+            }
         });
-  
-        const resultado = await resposta.json();
-  
-        mensagem.textContent = resultado.mensagem;
-        mensagem.style.color = resposta.ok ? "green" : "red";
-      } catch (erro) {
-        mensagem.textContent = "Erro ao conectar com o servidor.";
-        mensagem.style.color = "red";
-      }
-    });
-  </script>
-    
+    </script>
+
 </body>
+
 </html>
