@@ -105,98 +105,98 @@ html, body {
 
 /* Sessão das coleções */
 .joias {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  padding: 60px 20px;
-  background: white;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 60px 20px;
+    background: white;
 }
 
 .card {
-  background-color: var(--cor-destaque);
-  border-radius: 16px;
-  overflow: hidden;
-  width: 280px;
-  text-align: center;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
+    background-color: var(--cor-destaque);
+    border-radius: 16px;
+    overflow: hidden;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-10px);
+    transform: translateY(-10px);
 }
 
 .card img {
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 }
 
 .card h3 {
-  margin: 15px 0 5px;
-  color: var(--cor-texto);
+    margin: 15px 0 5px;
+    color: var(--cor-texto);
 }
 
 .card p {
-  margin-bottom: 15px;
-  color: var(--cor-texto);
+    margin-bottom: 15px;
+    color: var(--cor-texto);
 }
 
 
 /* Destaque */
 .destaque {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100vw;
-  min-height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    min-height: 100vh;
 }
 
 .card-joia {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 50%;
-  padding: 40px;
-  box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 50%;
+    padding: 40px;
+    box-sizing: border-box;
 }
 
 .produto-img {
-  max-width: 40%;
-  height: auto;
-  margin-bottom: 30px;
+    max-width: 40%;
+    height: auto;
+    margin-bottom: 30px;
 }
 
 .card-joia h2 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .card-joia p {
-  margin: 5px 0;
-  font-size: 16px;
+    margin: 5px 0;
+    font-size: 16px;
 }
 
 .preco {
-  font-weight: 500;
-  margin-top: 10px;
+    font-weight: 500;
+    margin-top: 10px;
 }
 
 .card-pessoa {
-  width: 50vw;
-  overflow: hidden;
-  display: flex;
-  justify-content: flex-end;
+    width: 50vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .modelo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: right center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
 }
 
 
