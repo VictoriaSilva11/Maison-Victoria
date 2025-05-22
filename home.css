@@ -76,7 +76,7 @@ html, body {
 .texto-video {
     position: absolute;
     top: 50%;
-    left: 10%;
+    right: 10%;
     transform: translateY(-50%);
     text-align: left;
     color: white;
@@ -161,12 +161,12 @@ html, body {
 
 .card h3 {
   margin: 15px 0 5px;
-  color: var(--cor-fundo);
+  color: var(--cor-texto);
 }
 
 .card p {
   margin-bottom: 15px;
-  color: var(--cor-fundo);
+  color: var(--cor-texto);
 }
 
 .destaque {
