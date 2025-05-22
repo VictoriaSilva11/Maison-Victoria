@@ -10,26 +10,34 @@
     <div class="cabecalho">
         <div class="logo"> Maison Victoria </div>
         <nav class="menu">
-            <a href="">Home</a>
+            <a href="home.html">Home</a>
             <a href="">Coleções</a>
             <a href="">Presentes</a>
             <a href="">História</a>
-            <a href="">Carrinho</a>
+            <a href="carrinho.html">Carrinho</a>
         </nav>
     </div>
 
-    <div class="formularios">
+    <section class="video-section">
+        <video class="video" autoplay muted loop playsinline>
+            <source src="https://www.vancleefarpels.com/content/dam/vancleefarpels/gift/mother's-day-2025/special-event/COVER%20EVENT%20DESKTOP.mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <section class="formularios">
         <h2 class="titulo-formularios">Adicionar item ao carrinho</h2>
-        <form class="form-carrinho" id="formcarrinho">
+        <form class="form-carrinho" id="formCarrinho">
             <label for="nome">Nome do item:</label>
             <input type="text" id="nome" required>
-            <!--O required define que o campo deve ser obrigatoriamente preenchido antes de ser enviado-->>
 
             <label for="tipo">Tipo:</label>
             <input type="text" id="tipo" required>
 
-            <label for="colecao">Preço ($):</label>
+            <label for="colecao">Coleção:</label>
             <input type="text" id="colecao" required>
+
+            <label for="preco">Preço ($):</label>
+            <input type="text" id="preco" required>
 
             <label for="quantidade">Quantidade:</label>
             <input type="text" id="quantidade" required>
@@ -37,7 +45,7 @@
             <button type="submit">Adicionar</button>
             <p class="mensagem" id="mensagem"></p>
         </form>
-    </div>
+    </section>
 
     <script>
     document.getElementById('formCarrinho').addEventListener('submit', async function (e) {
@@ -50,7 +58,30 @@
       const quantidade = parseInt(document.getElementById('quantidade').value);
   
       const mensagem = document.getElementById('mensagem');
+
+      if (!nome || !tipo || !colecao || isNaN(preco) || isNaN(quantidade) || quantidade < 1) {
+        mensagem.textContent = "Preencha todos os campos corretamente!";
+        mensagem.style.color = "red";
+        return;
+      }
   
+      const dados = {nome, tipo, colecao, preco, quantidade };
+  
+      try {
+        const resposta = await fetch('http://localhost:8000/carrinho', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(dados)
+        });
+  
+        const resultado = await resposta.json();
+  
+        mensagem.textContent = resultado.mensagem;
+        mensagem.style.color = resposta.ok ? "green" : "red";
+      } catch (erro) {
+        mensagem.textContent = "Erro ao conectar com o servidor.";
+        mensagem.style.color = "red";
+      }
     });
   </script>
     
