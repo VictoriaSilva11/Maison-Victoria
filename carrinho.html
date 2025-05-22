@@ -20,7 +20,7 @@
 
     <div class="formularios">
         <h2 class="titulo-formularios">Adicionar item ao carrinho</h2>
-        <form class="form-carrinho">
+        <form class="form-carrinho" id="formcarrinho">
             <label for="nome">Nome do item:</label>
             <input type="text" id="nome" required>
             <!--O required define que o campo deve ser obrigatoriamente preenchido antes de ser enviado-->>
@@ -38,6 +38,21 @@
             <p class="mensagem" id="mensagem"></p>
         </form>
     </div>
+
+    <script>
+    document.getElementById('formCarrinho').addEventListener('submit', async function (e) {
+      e.preventDefault();
+  
+      const nome = document.getElementById('nome').value.trim();
+      const tipo = document.getElementById('tipo').value.trim();
+      const colecao = document.getElementById('colecao').value.trim();
+      const preco = parseFloat(document.getElementById('preco').value);
+      const quantidade = parseInt(document.getElementById('quantidade').value);
+  
+      const mensagem = document.getElementById('mensagem');
+  
+    });
+  </script>
     
 </body>
 </html>
