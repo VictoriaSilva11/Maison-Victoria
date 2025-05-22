@@ -21,6 +21,8 @@ html, body {
     color: var(--cor-texto);
 }
 
+
+/* Cabeçalho */
 .cabecalho {
     position: absolute;
     top: 0;
@@ -53,4 +55,72 @@ html, body {
 
 .menu a:hover {
     opacity: 0.6;
+}
+
+
+/* Video */
+.video-section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+}
+
+.video-section video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    object-fit: fill;
+    z-index: 0;
+}
+
+
+/* Formulários */
+.formularios {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  z-index: 2;
+  text-align: center;
+  width: 300px;
+}
+
+.formularios h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.form-carrinho label {
+  display: block;
+  margin: 10px 0 5px;
+  text-align: left;
+}
+
+.form-carrinho input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.form-carrinho button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #111;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.form-carrinho button:hover {
+  background-color: #444;
 }
