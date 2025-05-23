@@ -42,3 +42,51 @@ app.get('/carrinho', async (request: FastifyRequest, reply: FastifyReply) => {
         }
     }
 })
+
+app.post('/carrinho', async (request: FastifyRequest, reply: FastifyReply) => {
+    const {nome, tipo, colecao, preco, quantidade } = request.body as any;
+
+    try {
+        const conn = await mysql.createConnection({
+            host: "localhost",
+            user: "root",
+            password: "",
+            database: "maison_victoria",
+            port: 3306
+        });
+
+        const query = "INSERT INTO carrinho (nome, tipo, colecao, preco, quantidade) VALUES (?, ?, ?, ?, ?)";
+        await conn.query(query, [nome, tipo, colecao, preco, quantidade]);
+
+
+        reply.status(200).send({ mensagem: "Item adicionado com sucesso ao carrinho!" });
+    } catch (erro: any) {
+        switch (erro.code) {
+            case "ECONNREFUSED":
+                console.log("ERRO: LIGUE O LARAGÃO!!! CABEÇA!");
+                reply.status(400).send({ mensagem: "ERRO: LIGUE O LARAGÃO!!! CABEÇA!" });
+                break;
+            case "ER_BAD_DB_ERROR":
+                console.log("ERRO: CONFIRA O NOME DO BANCO DE DADOS OU CRIE UM NOVO BANCO COM O NOME QUE VOCÊ COLOCOU LÁ NA CONEXÃO");
+                reply.status(400).send({ mensagem: "ERRO: CONFIRA O NOME DO BANCO DE DADOS OU CRIE UM NOVO BANCO COM O NOME QUE VOCÊ COLOCOU LÁ NA CONEXÃO" });
+                break;
+            case "ER_ACCESS_DENIED_ERROR":
+                console.log("ERRO: CONFIRA O USUÁRIO E SENHA NA CONEXÃO");
+                reply.status(400).send({ mensagem: "ERRO: CONFIRA O USUÁRIO E SENHA NA CONEXÃO" });
+                break;
+            default:
+                console.log(erro);
+                reply.status(400).send({ mensagem: "Erro desconhecido. Veja o terminal." });
+                break;
+        }
+    }
+});
+
+
+app.listen({ port: 8000 }, (err, address) => {
+    if (err) {
+        console.error(err)
+        process.exit(1)
+    }
+    console.log(`Server listening at ${address}`)
+})
